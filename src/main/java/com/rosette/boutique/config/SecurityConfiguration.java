@@ -52,11 +52,7 @@ public class SecurityConfiguration {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         // TODO: Replace with actual origins in production (e.g., "http://localhost:5173", "https://yourdomain.com")
-        configuration.setAllowedOrigins(List.of(
-            "http://localhost:5173",
-            "http://localhost:3000",
-            "http://localhost:8080"
-        ));
+        configuration.setAllowedOriginPatterns(List.of("*"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "X-Requested-With"));
         configuration.setAllowCredentials(true);
