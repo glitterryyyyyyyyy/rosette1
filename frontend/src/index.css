@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Outfit:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+/* ROOT */
+:root{
+  --bg:#fffafb;
+  --bg-soft:#fff7fa;
+
+  --white:#ffffff;
+
+  --pink-soft:#f8dce6;
+  --pink:#efabc6;
+  --pink-dark:#d887a7;
+
+  --text:#6d545f;
+  --text-soft:#a78c96;
+
+  --border:#f4d8e3;
+
+  --shadow:
+  0 10px 30px rgba(219,112,147,.08);
+}
+
+/* BASE */
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  overflow-x:hidden;
+
+  font-family:'Outfit', sans-serif;
+
+  background:
+  linear-gradient(
+    to bottom,
+    #fffafb,
+    #fff7fa,
+    #fffafb
+  );
+
+  color:var(--text);
+
+  -webkit-font-smoothing:antialiased;
+}
+
+/* TYPOGRAPHY */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.serif{
+  font-family:
+  'Playfair Display',
+  serif;
+
+  letter-spacing:-0.02em;
+}
+
+/* LINKS */
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+/* BUTTONS */
+button{
+  font-family:'Outfit', sans-serif;
+
+  border:none;
+
+  cursor:pointer;
+
+  transition:.3s ease;
+}
+
+/* IMAGES */
+img{
+  display:block;
+  max-width:100%;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{
+  width:8px;
+  height:8px;
+}
+
+::-webkit-scrollbar-track{
+  background:transparent;
+}
+
+::-webkit-scrollbar-thumb{
+  background:#f0bfd2;
+  border-radius:999px;
+}
+
+/* GLASS */
+.glass{
+  background:
+  rgba(255,255,255,.72);
+
+  backdrop-filter:blur(14px);
+
+  -webkit-backdrop-filter:blur(14px);
+
+  border:
+  1px solid rgba(255,255,255,.8);
+}
+
+/* ANIMATIONS */
+@keyframes float{
+  0%,100%{
+    transform:translateY(0px);
+  }
+
+  50%{
+    transform:translateY(-8px);
+  }
+}
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes scroll{
+  0%{
+    transform:translateX(0);
+  }
+
+  100%{
+    transform:translateX(-50%);
+  }
+}
+
+/* UTILITIES */
+.fade-up{
+  animation:
+  fadeUp .6s ease-out;
+}
+
+.float{
+  animation:
+  float 6s ease-in-out infinite;
+}
+
+/* REMOVE UGLY BLUE TAP */
+input,
+textarea,
+button,
+select{
+  outline:none;
+}
+
+/* PLACEHOLDER */
+::placeholder{
+  color:#c6a8b3;
+}
+
+/* SELECTION */
+::selection{
+  background:#f5cadb;
+  color:#6d545f;
+}
