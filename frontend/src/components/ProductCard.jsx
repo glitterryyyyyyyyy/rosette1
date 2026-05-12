@@ -182,12 +182,16 @@ const ProductCard = ({ product }) => {
           {product.brand && (
             <p
               style={{
-                fontSize: '.7rem',
-                letterSpacing: '.15em',
+                fontSize: '0.65rem',
+                letterSpacing: '0.2em',
                 textTransform: 'uppercase',
-                color: '#C69AAD',
-                marginBottom: '.35rem',
-                fontWeight: 700,
+                color: '#D49DAE',
+                marginBottom: '0.4rem',
+                fontWeight: 800,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '0.3rem',
               }}
             >
               ✧ {product.brand.toUpperCase()} ✧
@@ -197,20 +201,15 @@ const ProductCard = ({ product }) => {
           {/* NAME */}
           <h3
             style={{
-              fontFamily:
-                "'Playfair Display', serif",
-              color: '#5e4a53',
-              fontSize: '1.15rem',
-              fontWeight: 700,
+              fontFamily: "'Playfair Display', serif",
+              color: isHovered ? '#DB7093' : '#5e4a53',
+              fontSize: '1.25rem',
+              fontWeight: 800,
               lineHeight: 1.2,
-              marginBottom: '.35rem',
-              background: isHovered
-                ? 'linear-gradient(135deg, #DB7093, #FFB6C1)'
-                : 'transparent',
-              backgroundClip: isHovered ? 'text' : 'unset',
-              WebkitBackgroundClip: isHovered ? 'text' : 'unset',
-              WebkitTextFillColor: isHovered ? 'transparent' : 'unset',
+              marginBottom: '0.4rem',
               transition: 'all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
+              textAlign: 'center',
+              letterSpacing: '0.02em',
             }}
           >
             {product.name}
@@ -220,10 +219,10 @@ const ProductCard = ({ product }) => {
           {product.size && (
             <p
               style={{
-                color: '#DB7093',
-                fontSize: '.8rem',
+                color: '#F48FB1',
+                fontSize: '0.8rem',
                 fontStyle: 'italic',
-                marginBottom: '.55rem',
+                marginBottom: '0.7rem',
                 fontWeight: 600,
               }}
             >
@@ -237,12 +236,14 @@ const ProductCard = ({ product }) => {
               color: '#DB7093',
               fontWeight: 800,
               fontSize: '1.1rem',
-              marginBottom: '1rem',
-              background: 'rgba(255, 182, 193, 0.1)',
-              padding: '0.5rem 1rem',
-              borderRadius: '15px',
+              marginBottom: '1.2rem',
+              background: 'linear-gradient(to right, rgba(255, 182, 193, 0.15), rgba(255, 182, 193, 0.3), rgba(255, 182, 193, 0.15))',
+              padding: '0.4rem 1.4rem',
+              borderRadius: '999px',
               transition: 'all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
-              boxShadow: isHovered ? '0 6px 15px rgba(219, 112, 147, 0.15)' : 'none',
+              boxShadow: isHovered ? '0 4px 15px rgba(219, 112, 147, 0.2)' : 'none',
+              transform: isHovered ? 'scale(1.05)' : 'scale(1)',
+              letterSpacing: '0.05em',
             }}
           >
             ₹{product.price?.toLocaleString()}
@@ -255,31 +256,23 @@ const ProductCard = ({ product }) => {
             }}
             style={{
               width: '100%',
-              border: '2px solid #FFB6C1',
+              border: isHovered ? '2px solid transparent' : '2px solid rgba(255, 182, 193, 0.6)',
               borderRadius: '999px',
-              padding: '.9rem 1rem',
+              padding: '0.9rem 1rem',
               background: isHovered
-                ? 'linear-gradient(135deg, #DB7093, #FFB6C1)'
+                ? 'linear-gradient(135deg, #FF9A9E, #FECFEF)'
                 : 'transparent',
               color: isHovered ? 'white' : '#DB7093',
-              fontWeight: 700,
-              fontSize: '.85rem',
+              fontWeight: 800,
+              fontSize: '0.85rem',
               transition: 'all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
               cursor: 'pointer',
               textTransform: 'uppercase',
-              letterSpacing: '.08em',
-              boxShadow: isHovered ? '0 8px 25px rgba(219, 112, 147, 0.3)' : 'none',
-              transform: isHovered ? 'scale(1.02)' : 'scale(1)',
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.background = 'linear-gradient(135deg, #DB7093, #FFB6C1)';
-              e.target.style.color = 'white';
-            }}
-            onMouseLeave={(e) => {
-              if (!isHovered) {
-                e.target.style.background = 'transparent';
-                e.target.style.color = '#DB7093';
-              }
+              letterSpacing: '0.1em',
+              boxShadow: isHovered 
+                ? '0 10px 25px rgba(255, 154, 158, 0.4)' 
+                : 'none',
+              transform: isHovered ? 'scale(1.03) translateY(-2px)' : 'scale(1)',
             }}
           >
             Add to Tote ✦
