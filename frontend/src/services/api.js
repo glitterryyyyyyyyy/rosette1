@@ -4,7 +4,7 @@ const api = axios.create({
   baseURL:
     import.meta.env
       .VITE_API_BASE_URL ||
-    'https://rosette1-production.up.railway.app/products',
+    'https://rosette1-production.up.railway.app/api',
 
   headers: {
     'Content-Type':
