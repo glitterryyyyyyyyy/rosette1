@@ -196,13 +196,123 @@ const AdminDashboard = () => {
 
               <div>
                 <label style={{ fontSize: '0.7rem', fontWeight: 800, color: colors.primary, textTransform: 'uppercase', letterSpacing: '0.08em' }}>PIECE PHOTOS ✧</label>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '0.6rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '0.6rem', marginBottom: '1rem' }}>
                   <label style={{ padding: '0.8rem 1.2rem', backgroundColor: 'rgba(255, 182, 193, 0.15)', border: `2px dashed ${colors.primary}`, borderRadius: '18px', color: colors.primary, fontWeight: 800, cursor: 'pointer', fontSize: '0.8rem', transition: 'all 0.3s', textTransform: 'uppercase', letterSpacing: '0.05em' }} onMouseEnter={(e) => {e.target.style.backgroundColor = 'rgba(255, 182, 193, 0.25)'; e.target.style.transform = 'scale(1.05)';}} onMouseLeave={(e) => {e.target.style.backgroundColor = 'rgba(255, 182, 193, 0.15)'; e.target.style.transform = 'scale(1)';}}>
                     {uploading ? '⏳ Uploading...' : '➕ Choose Files'}
-                    <input type="file" multiple onChange={handleImageUpload} style={{ display: 'none' }} />
+                    <input type="file" multiple onChange={handleImageUpload} style={{ display: 'none' }} accept="image/*" />
                   </label>
-                  <span style={{ fontSize: '0.8rem', color: colors.textLight, fontWeight: 700 }}>{form.images.length} added</span>
+                  <span style={{ fontSize: '0.8rem', color: colors.textLight, fontWeight: 700 }}>{form.images.length} photo(s)</span>
                 </div>
+                
+                {/* Image Previews Grid */}
+                {form.images.length > 0 && (
+                  <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fill, minmax(100px, 1fr))',
+                    gap: '0.8rem',
+                    padding: '1rem',
+                    backgroundColor: 'rgba(255, 240, 245, 0.4)',
+                    borderRadius: '18px',
+                    border: `2px solid ${colors.pinkBorder}`,
+                    marginTop: '0.8rem'
+                  }}>
+                    {form.images.map((img, idx) => (
+                      <div
+                        key={idx}
+                        style={{
+                          position: 'relative',
+                          width: '100%',
+                          aspectRatio: '1',
+                          borderRadius: '14px',
+                          overflow: 'hidden',
+                          border: `2px solid ${colors.pinkBorder}`,
+                          backgroundColor: colors.white,
+                          transition: 'all 0.3s',
+                          cursor: 'pointer'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.boxShadow = `0 8px 20px rgba(219, 112, 147, 0.3)`;
+                          e.currentTarget.style.transform = 'scale(1.05)';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.boxShadow = 'none';
+                          e.currentTarget.style.transform = 'scale(1)';
+                        }}
+                      >
+                        <img
+                          src={img}
+                          alt={`Upload ${idx + 1}`}
+                          style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover'
+                          }}
+                        />
+                        
+                        {/* Delete Button */}
+                        <button
+                          onClick={() => {
+                            setForm({
+                              ...form,
+                              images: form.images.filter((_, i) => i !== idx)
+                            });
+                          }}
+                          style={{
+                            position: 'absolute',
+                            top: '4px',
+                            right: '4px',
+                            width: '28px',
+                            height: '28px',
+                            borderRadius: '50%',
+                            backgroundColor: 'rgba(219, 112, 147, 0.9)',
+                            color: 'white',
+                            border: 'none',
+                            cursor: 'pointer',
+                            fontSize: '1.1rem',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            fontWeight: 700,
+                            transition: 'all 0.2s',
+                            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
+                          }}
+                          onMouseEnter={(e) => {
+                            e.target.style.backgroundColor = 'rgba(219, 112, 147, 1)';
+                            e.target.style.transform = 'scale(1.15)';
+                          }}
+                          onMouseLeave={(e) => {
+                            e.target.style.backgroundColor = 'rgba(219, 112, 147, 0.9)';
+                            e.target.style.transform = 'scale(1)';
+                          }}
+                        >
+                          ✕
+                        </button>
+                        
+                        {/* Image Order Number */}
+                        <div
+                          style={{
+                            position: 'absolute',
+                            bottom: '4px',
+                            left: '4px',
+                            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                            color: colors.primary,
+                            width: '24px',
+                            height: '24px',
+                            borderRadius: '50%',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            fontSize: '0.7rem',
+                            fontWeight: 800,
+                            border: `2px solid ${colors.primary}`
+                          }}
+                        >
+                          {idx + 1}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
               
               <div style={{ display: 'flex', gap: '1.5rem', padding: '1rem', background: 'rgba(255, 182, 193, 0.08)', borderRadius: '18px', border: '2px solid rgba(255, 182, 193, 0.2)' }}>
